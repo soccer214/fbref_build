@@ -1,6 +1,4 @@
 import pandas as pd
-import psycopg2
-import os
 
 
 def getSomeEnglishData(year_one, last_year, league):
@@ -183,39 +181,5 @@ def getYearlyData(year_one, last_year, league):
     return df_full
 
 
-# addToDB needs to be able to create new tables based on varying number of columns-
-""" def addToDB(data, league):
-    league = str(league)
-    USER = os.environ['USERNAME'] = 'postgres'
-    PASSWORD = os.environ['PASSWORD'] = 'aaronwise'
-    conn = psycopg2.connect(database='Football_Data',
-                            user=USER,
-                            password=PASSWORD,
-                            port=5432)
-    cursor = conn.cursor()
-    sql_string = f'DROP TABLE IF EXISTS {league};  \
-                    CREATE TABLE {league} ( \
-                    game_id integer PRIMARY KEY NOT NULL, \
-                    DATE date,   \
-                    HomeTeam character varying(50),    \
-                    AwayTeam character varying(50),    \
-                    HomeGoals integer, \
-                    AwayGoals integer, \
-                    HalfTimeHomeGoals integer, \
-                    HalfTimeAwayGoals integer, \
-                    HomeShots integer, \
-                    AwayShots integer, \
-                    HomeShotsTarget integer,   \
-                    AwayShotsTarget integer,   \
-                    HomeFouls integer, \
-                    AwayFouls integer, \
-                    HomeYellow integer,    \
-                    AwayYellow integer,    \
-                    HomeRed integer,   \
-                    AwayRed integer)'
-    cursor.execute(sql_string)
 
 
-    sql_import = f"COPY '{data}' FROM '{data}';"
-    cursor.execute(sql_import)
-    return cursor.fetchall()"""
